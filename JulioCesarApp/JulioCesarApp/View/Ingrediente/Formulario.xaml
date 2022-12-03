@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JulioCesarApp.View.Ingrediente.Formulario"
+             Title="{Binding Nome,StringFormat='Ingrediente: {0:F0}'}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Salvar"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame>
+                <StackLayout>
+                    <Entry x:Name="txt_receita_id" Text="{Binding ReceitaId}" IsVisible="false"/>
+                    <Label Text="Ingrediente:"/>
+                    <Entry x:Name="txt_nome" Text="{Binding Nome}"/>
+                    <Label Text="Quantidade:"/>
+                    <Entry x:Name="txt_quantidade" Keyboard="Numeric" Text="{Binding Quantidade}"/>
+                    <Label Text="Medida:"/>
+                    <Picker x:Name="pck_medida" HorizontalOptions="FillAndExpand" Title="Selecione a medida">
+                    </Picker>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

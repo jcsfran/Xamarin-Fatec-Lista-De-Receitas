@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JulioCesarApp.View.Receita.Formulario"
+             Title="{Binding Source={x:Reference txt_nome}, Path=Text}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Listar_Ingredientes_Clicked" x:Name="tbt_ingredientes"/>
+        <ToolbarItem Clicked="ToolbarItem_Salvar_Clicked" Text="Salvar" x:Name="tbt_salvar"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <Style TargetType="Editor">
+            <Setter Property="AutoSize" Value="TextChanges"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame>
+                <StackLayout>
+                    <Label Text="Nome:"/>
+                    <Entry x:Name="txt_nome" Text="{Binding Nome}"/>
+                    <Label Text="Modo de preparo:"/>
+                    <Editor x:Name="txt_modo_preparo" Text="{Binding ModoPreparo}" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

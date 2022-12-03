@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JulioCesarApp.View.Ingrediente.Listagem"
+             Title="Ingredientes">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Clicked="ToolbarItem_Clicked_Adicionar" Text="Adicionar Ingrediente" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <Frame>
+            <StackLayout>
+                <Label x:Name="lbl_receita_id" Text="{Binding ReceitaId}" IsVisible="false"/>
+                <RefreshView x:Name="ref_carregando" IsRefreshing="True" Refreshing="ref_carregando_Refreshing">
+                    <ListView x:Name="lst_ingredientes" ItemSelected="lst_ingredientes_ItemSelected">
+                        <ListView.Header>
+                            <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Text="NOME" FontAttributes="Bold"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="QUANTIDADE" FontAttributes="Bold"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="MEDIDA" FontAttributes="Bold"/>
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Remover" Clicked="MenuItem_Clicked_Remover"/>
+                                    </ViewCell.ContextActions>
+                                    <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto">
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Nome}"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Quantidade}"/>
+                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Medida}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </RefreshView>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
